@@ -12,11 +12,7 @@ domain. Please jigger this into whatever works for you.
 ### `emacspeak-gptel-agent.el`
 
 Adds an Emacspeak-friendly “agent/executor” workflow on top of
-`gptel`, designed for hands-free/low-friction use with speech. What
-the fuck did the AI say hands-free for? This shit ain't hands-free.
-More like eyes-free but I hate the over-use of that shit in early
-Android days. So it basically speech-enables gptel-agent. Damn Codex
-don't know shit about blind people.
+`gptel`, designed for hands-free/low-friction use with speech. Rather, eyes-free but the AI can't nuance about disabilities.
 
 High-level usage:
 
@@ -35,4 +31,12 @@ An `elfeed` speech-enablement layer based on upstream Emacspeak, with a couple o
 
 - **Advice reorganization:** local refactoring/reshuffling of advice so related `elfeed` entry/navigation behaviors are grouped more coherently.
 - **Open entry speaking behavior:** when opening an entry, it speaks the *entire buffer* (`emacspeak-speak-buffer`) instead of only the current line (`emacspeak-speak-line`). This provides immediate context for the opened article/entry.
-At some point I'll add emacspeak-mastodon and emacspeak-telega.
+
+### `emacspeak-nov.el`
+
+An `nov` speech-enablement layer with a local fix for EPUB link navigation:
+
+- **Link text on `TAB`:** when moving between links in `nov-mode`, Emacspeak now speaks the visible link label instead of the underlying EPUB target such as `text/ch001.xhtml`.
+- **Scope:** this is implemented as NOV-specific advice around `shr-next-link` and `shr-previous-link`, so the fix applies directly to `TAB` and reverse link navigation inside `nov`.
+
+
